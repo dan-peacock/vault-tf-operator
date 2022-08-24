@@ -1,7 +1,7 @@
 data "terraform_remote_state" "creds" {
   backend = "remote"
   config = {
-    organization = "org-K9XgZ2feWb8hQMZE"
+    organization = "org-K9XgZ2feWb8hQmze"
     workspaces = {
       name = "Hargreaves-Lansdown-Vault-Admin"
     }
