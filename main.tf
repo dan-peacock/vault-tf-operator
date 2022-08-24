@@ -10,7 +10,7 @@ data "terraform_remote_state" "creds" {
 
 data "vault_aws_access_credentials" "creds" {
   backend = data.terraform_remote_state.creds.outputs.backend
-  role    = data.terraform_remote_state.admin.outputs.role
+  role    = data.terraform_remote_state.creds.outputs.role
 }
 
 output "creds" {
