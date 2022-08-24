@@ -8,12 +8,21 @@ data "terraform_remote_state" "creds" {
   }
 }
 
+data "vault_aws_access_credentials" "creds" {
+  backend = data.terraform_remote_state.creds.outputs.backend
+  role    = data.terraform_remote_state.admin.outputs.role
+}
+
+output "creds" {
+  value = data.vault_aws_access_credentials.creds.access_key
+}
 
 # provider "aws" {
 #   region     = var.region
-#   access_key = data.creds.outputs.vault_aws_access_credentials.creds.access_key
-#   secret_key = data.creds.outputs.vault_aws_access_credentials.creds.secret_key
+#   access_key = data.vault_aws_access_credentials.creds.access_key
+#   secret_key = data.vault_aws_access_credentials.creds.secret_key
 # }
+
 
 # data "aws_ami" "ubuntu" {
 #   most_recent = true
