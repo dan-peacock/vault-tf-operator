@@ -1,5 +1,4 @@
 data "terraform_remote_state" "creds" {
-  backend = "remote"
   config = {
     organization = "org-K9XgZ2feWb8hQmze"
     workspaces = {
