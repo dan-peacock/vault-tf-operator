@@ -1,15 +1,13 @@
 data "terraform_remote_state" "creds" {
   backend = "remote"
-
   config = {
-    backend = vault_aws_secret_backend.aws.path
-    role = vault_aws_secret_backend_role.admin.name
     organization = "org-K9XgZ2feWb8hQMZE"
     workspaces = {
       name = "Hargreaves-Lansdown-Vault-Admin"
     }
   }
 }
+
 
 # provider "aws" {
 #   region     = var.region
