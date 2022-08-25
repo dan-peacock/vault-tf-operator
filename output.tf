@@ -1,3 +1,3 @@
-output "role" {
- value = data.terraform_remote_state.aws_creds.outputs.role
+output "temp_user" {
+ value = data.vault_aws_access_credentials.aws_creds.access_key
 }
