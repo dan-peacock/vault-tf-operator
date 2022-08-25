@@ -1,3 +1,3 @@
 output "role" {
- value = data.terraform_remote_state.creds.outputs.role
+ value = data.terraform_remote_state.aws_creds.outputs.role
 }
