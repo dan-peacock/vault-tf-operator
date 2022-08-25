@@ -1,4 +1,4 @@
-data "terraform_remote_state" "creds" {
+data "terraform_remote_state" "vault_details" {
   backend = "remote"
   config = {
     organization = "danpeacock"
@@ -8,15 +8,15 @@ data "terraform_remote_state" "creds" {
   }
 }
 
-data "vault_aws_access_credentials" "creds" {
-  backend = data.terraform_remote_state.creds.outputs.backend
-  role    = data.terraform_remote_state.creds.outputs.role
+data "vault_aws_access_credentials" "aws_creds" {
+  backend = data.terraform_remote_state.vault_details.outputs.backend
+  role    = data.terraform_remote_state.vault_details.outputs.role
 }
 
 provider "aws" {
   region     = var.region
-  access_key = data.vault_aws_access_credentials.creds.access_key
-  secret_key = data.vault_aws_access_credentials.creds.secret_key
+  access_key = data.vault_aws_access_credentials.aws_creds.access_key
+  secret_key = data.vault_aws_access_credentials.aws_creds.secret_key
 }
 
 
