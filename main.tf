@@ -3,7 +3,7 @@ data "terraform_remote_state" "vault_details" {
   config = {
     organization = "danpeacock"
     workspaces = {
-      name = "Hargreaves-Lansdown-Vault-Admin"
+      name = "Hargreaves-Lansdown-Admin"
     }
   }
 }
